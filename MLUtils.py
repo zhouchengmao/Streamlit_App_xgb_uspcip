@@ -85,12 +85,12 @@ def do_base_preprocessing(pocd, with_y=True, y_num=1, col_input=None, col_str=No
     return new_pocd
 
 
-def do_split_data(pocd):
+def do_split_data(pocd, random_state=1):
     # 原始数据的处理（分割X, y，抽样分割，等等）
     X, y = split_x_y(pocd)
 
     # 仅分成2份：训练集，测试集
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=random_state, stratify=y)
 
     # reshape操作
     X_train, y_train = np_reshape_x_y(X_train, y_train)

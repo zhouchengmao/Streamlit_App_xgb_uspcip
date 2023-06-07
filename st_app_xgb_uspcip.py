@@ -53,13 +53,13 @@ def do_processing():
         st.write(pocd)
 
     # 分割数据
-    X_train, X_test, y_train, y_test = do_split_data(pocd)
+    X_train, X_test, y_train, y_test = do_split_data(pocd, random_state=7)
     X_train, X_test, y_train, y_test = do_xy_preprocessing(X_train, X_test, y_train, y_test)
 
     col1, col2 = st.columns(2)
 
     # 准备模型
-    xgbc = XGBClassifier(learning_rate=0.12, n_estimators=12, max_depth=2, min_child_weight=1, gamma=0.1,
+    xgbc = XGBClassifier(learning_rate=0.10, n_estimators=20, max_depth=4, min_child_weight=1, gamma=0.1,
                          scale_pos_weight=1)
 
     # 模型训练、显示结果
